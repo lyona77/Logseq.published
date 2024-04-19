@@ -1,0 +1,111 @@
+---
+title: "Access Remote"
+author: "Lingyan Yu"
+date: "`r Sys.Date()`"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+  markdown: 
+    wrap: 72
+status: in progress
+---
+
+```{r setup, include=FALSE}
+library(here)
+library(tidyverse)
+library(conflicted)
+
+# !diagnostics level=core
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+The local desktop uses macOS system. See linked resources for Windows
+specifications. Feel free to modify the document to reflect system
+updates and to add specifics of non-macOS devices.
+
+# 1. Remote Git Repository (Repo)
+
+## Use Case
+
+Clone a remote (e.g., Github) repository to the local machine and the
+MSI. All local version changes should be pushed to the remote repo.
+
+### Recommendation
+
+Set up ssh key pair between a machine and a GitHub account for security.
+In some circumstance, one may opt to use repo URLs instead for
+short-term convenience.
+
+## Workflow
+
+When starting each work session on desktop, pull first to ensure that
+the cloned desktop repo has incorporated the updates from other
+collaborators or from other machine (i.e., between remote session on MSI
+and one's local desktop).
+
+```{bash}
+cd <git directory> # E.g., /home/macdonal/yu000341/Minutes_fMRI_analyses
+git pull origin main 
+# Resolve conflicts (if any)
+
+### MAKE CHANGES ###
+
+### Local operation ###
+git add <file> # stage selected changes so that the commit message will be more directed
+git add --all . # stage all changes including the manual removals
+git commit -m "Message"
+
+git commit -am "Message" # stage all tracked, modified files and commit them in one step
+# This will not include new (untracked) files.
+
+### Remote operation ###
+git pull origin main # pull before push
+# Resolve conflicts (if any)
+git push origin main
+```
+
+### Notes
+
+Pull would not overwrite changes made on the current machine that's not
+in conflict with the pulled updates. If there is a conflict, pull would
+stop and force one to examine and resolve the conflicts first (merge,
+stash, etc.). Conflicts are uncommon when collaborators work on
+different files or different sections of the same file.
+
+```{bash Utility git functions}
+git status # check what files have been changed
+git log # display the commit history along with the commit hashes (40-character strings)
+git checkout <commit-hash> # revert to a previous state or a different branch
+git stash "description" # temporarily save uncommitted local changes and clear the working directory
+```
+
+# 2. RStudio is open source and natively integrated with GIT
+
+Natively integrated with GitHub Copilot (AI-powered code completion) if
+interested. GitHub Copilot is not free and costs \$10/mo across
+platforms.
+
+# 3. VS Code is open source and natively integrated with GIT
+
+Natively integrated with GitHub Copilot (AI-powered code completion).
+
+Host an acclaimed Remote Development extension pack.
+
+## 1) Readily integrated with GitHub via the Remote - Repo extension
+
+After connecting to a remote repository, may edit and commit push
+directly from the editor without cloning the repository to the local
+machine.
+
+*Note.* Not recommended for daily use but can be very helpful when
+needing quick edits on a temporary device.
+
+## 2) VS Code can be readily integrated with MSI ssh via the Remote - SSH extension
+
+[VS Code
+Documentation](https://code.visualstudio.com/docs/remote/ssh#_getting-started)
+
+Get the full host name with `bash hostname -f` on the remote terminal.
+
+Must be on VPN or on university sites when using VS Code to connect with
+the remote host.
