@@ -1,0 +1,60 @@
+---
+title: "R Environment Management"
+author: "Lingyan Yu"
+date: "`r Sys.Date()`"
+status: "Published"
+output:
+  html_document: default
+  pdf_document: default
+editor_options:
+  chunk_output_type: console
+  markdown:
+    wrap: 80
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# 1. R Environment Management In an R Project
+
+Initiate R environment management by creating a `renv.lock` snapshot and a
+project-specific library:
+
+```{r}
+renv::init()
+```
+
+To update the library is to take a new snapshot: `renv::snapshot()`
+
+# 2. If There Exists Subprojects
+
+Create a `.Rprofile` file in the subproject folder and write `renv::autoload()`
+into the file.
+
+Opening the subproject session will automatically load the environment
+configured and maintained in the upper level.
+
+# 3. Sync the Environment Across Machines
+
+Git only needs to track the `renv.lock` in R projects.
+
+-   One may restore the environment by running `renv::restore()` in the R console
+    with the environment snapshot stored in `renv.lock`.
+-   Actual `renv` library folder is typically too large for GitHub.
+-   Optional: tracking the `renv` library folder as well to save installation
+    time based on the `renv.lock` snapshot
+
+The restoring process can be automated by adding the following code to the R
+script:
+
+``` r
+if (!requireNamespace("renv", quietly = TRUE)) install.packages("renv")
+renv::restore()
+```
+
+However, the restoring process can be time-consuming and may require some manual
+resolutions.
+
+One may want to run the script in the background or backup the `renv` folder
+using cloud storage when switching to a new machine for the first time.
