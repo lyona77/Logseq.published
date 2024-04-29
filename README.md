@@ -1,37 +1,26 @@
----
-title: Curated Tutorials
-contributor: "Lingyan Yu"
-date: "`2024/04/20"
-status: "Published"
-editor_options:
-  chunk_output_type: console
-  markdown:
-    wrap: 80
----
+# Curated Tutorials
 
-For workflow management and best practices research
+**contributor**: Lingyan Yu  
+**date**: 2024/04/29  
+**status**: In Progress  
+**version**: 1.1
 
-# YAML 
+This repository contains a collection of curated tutorials focusing on workflow management and best practices in reproducible scientific computing.
 
-Each markdown-based file include a `status` field to indicate the progress of
-the tutorial.
+Each tutorial is written in Markdown and includes a `status` field to indicate its progress:
 
--   **In Progress:** Indicates that the tutorial is not ready for use. This
-    stage is for gathering input and ongoing work. This status indicates that
-    the document is being actively worked on.
+- **In Progress**: The tutorial is currently being written and is not ready for use.
+- **Complete Draft**: The tutorial is ready for use, but may still be updated or improved.
+- **Published**: The tutorial is finalized and will not receive major updates.
+- **Archived**: The tutorial is no longer being updated, but is kept for historical reference.
+- **Obsolete**: The tutorial is outdated and may contain information that is no longer accurate or relevant.
 
--   **Complete Draft:** The tutorial may be ready for use, but is still an
-    active document.
+If a tutorial is significantly updated after being published, its `date` and `version` fields will be updated.
 
--   **Published:** The document is finalized and publishable outputs (html, pdf)
-    have been generated.
+## Contributing
 
--   **Archived**
+Contributions to these tutorials are welcome. If you have a suggestion for improvement or want to add a new tutorial, you can do this by creating a new file or editing an existing one directly on GitHub. You may also clone the entire repo to your own computer and edit them locally before "syncing" with the remote main branch.  
 
--   **Obsolete**
+Don't worry if you're new to this. This repo itself offers beginner tutorials for git version control and remote computing. If you need any help with the startup, don't hesitate to reach out to the repo contributor (s) (yu000341@umn.edu)!
 
-Should major revisions be made after the tutorials are "published," add a
-"version" field and print it out along with the date of updates in the output
-documents.
-
-# MIT License
+## The MIT License
