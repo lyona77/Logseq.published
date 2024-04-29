@@ -1,9 +1,3 @@
----
-header-includes:
-  - \usepackage{hyperref}
-  - \hypersetup{colorlinks=true, linkcolor=blue, filecolor=magenta, urlcolor=cyan}
----
-
 # Git for Version Control: Intro
 
 ## Main functions
@@ -39,6 +33,8 @@ Github enterprise: <http://github.umn.edu/>
       git config --global user.name "Your Name"
       git config --global user.email "youremail@example.com"
       ```
+
+      If just for the session, remove `--global`.
 
 3. Create/select a local folder for project-related items
 
