@@ -16,7 +16,7 @@ editor_options:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-# 1. R Environment Management In an R Project
+## 1. R Environment Management In an R Project
 
 Initiate R environment management by creating a `renv.lock` snapshot and a
 project-specific library:
@@ -27,7 +27,7 @@ renv::init()
 
 To update the library is to take a new snapshot: `renv::snapshot()`
 
-# 2. If There Exists Subprojects
+## 2. If There Exists Subprojects
 
 Create a `.Rprofile` file in the subproject folder and write `renv::autoload()`
 into the file.
@@ -35,7 +35,7 @@ into the file.
 Opening the subproject session will automatically load the environment
 configured and maintained in the upper level.
 
-# 3. Sync the Environment Across Machines
+## 3. Sync the Environment Across Machines
 
 Git only needs to track the `renv.lock` in R projects.
 
