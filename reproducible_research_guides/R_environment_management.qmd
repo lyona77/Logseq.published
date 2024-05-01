@@ -3,18 +3,10 @@ title: "R Environment Management"
 author: "Lingyan Yu"
 date: "`r Sys.Date()`"
 status: "Published"
-output:
-  html_document: default
-  pdf_document: default
-editor_options:
-  chunk_output_type: console
-  markdown:
-    wrap: 80
+format:
+    html:
+        code-fold: true
 ---
-
-```{r setup, include = FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
 
 ## 1. R Environment Management In an R Project
 

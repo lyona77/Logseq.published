@@ -52,3 +52,6 @@ rsconnect/
 # Mac files
 .DS_Store
 R_Project_Workflow/RMarkdown_report_template.Rmd
+
+# Quarto files
+/.quarto/
