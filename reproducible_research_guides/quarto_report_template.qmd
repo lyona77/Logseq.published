@@ -1,7 +1,6 @@
 ---
 title: "Report Template"
 author: "Lingyan Yu"
-date: "`r Sys.Date()`"
 toc: true
 status: "Published"
 version: "2.0"
