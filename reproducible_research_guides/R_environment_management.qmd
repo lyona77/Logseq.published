@@ -2,20 +2,21 @@
 title: "R Environment Management"
 author: "Lingyan Yu"
 date: "`r Sys.Date()`"
+toc: true
 status: "Published"
 format:
     html:
-        code-fold: true
+        html-math-method: katex
+        code-tools: true
+        self-contained: true
+execute: 
+    warning: false
 ---
 
 ## 1. R Environment Management In an R Project
 
 Initiate R environment management by creating a `renv.lock` snapshot and a
-project-specific library:
-
-```{r}
-renv::init()
-```
+project-specific library: `renv::init()`.
 
 To update the library is to take a new snapshot: `renv::snapshot()`
 
@@ -40,7 +41,7 @@ Git only needs to track the `renv.lock` in R projects.
 The restoring process can be automated by adding the following code to the R
 script:
 
-``` r
+```r
 if (!requireNamespace("renv", quietly = TRUE)) install.packages("renv")
 renv::restore()
 ```

@@ -2,18 +2,23 @@
 title: "Report Template"
 author: "Lingyan Yu"
 date: "`r Sys.Date()`"
+toc: true
 status: "Published"
-version: "1.0"
+version: "2.0"
 format:
     html:
-        code-fold: true
+        html-math-method: katex
+        code-tools: true
+        self-contained: true
+execute: 
+    warning: false
 ---
 
-```{r setup, include=FALSE}
+```{r Load libraries}
 if (!requireNamespace("pacman", quietly = TRUE)) {
     install.packages("pacman")
 }
-pacman::p_load(here, tidyverse)
+pacman::p_load(here, tidyverse, plotly)
 ```
 
 ```{r Load data and source functions}
@@ -45,7 +50,7 @@ pacman::p_load(here, tidyverse)
 
 ### 4) RERUN Messages
 
--   (NO NEED TO RERUN)\
+-   (NO NEED TO RERUN)     
 -   (DO NOT RERUN UNLESS INTENDING TO UPDATE)
 
 ### 5) Tags
@@ -77,18 +82,47 @@ pacman::p_load(here, tidyverse)
 
 ```
 
-## Start running here if no dataset updates.
+### Tables
+
+Use the `knitr::kable()` function to print tables as HTML:
+```{r}
+knitr::kable(head(ggplot2::diamonds))
+```
 
 ## 5. Data Analyses
 
-```{r}
+### LaTeX Math
 
-```
+$$
+P\left(A=2\middle|\frac{A^2}{B}>4\right)
+$$
 
 ## 6. Data Visualization
 
+### Static Plot
 ```{r}
+#| label: fig-dat
+#| fig-cap: "Dat"
+#| code-fold: true
+dat <- data.frame(cond = rep(c("A", "B"), each=10),
+                  xvar = 1:20 + rnorm(20,sd=3),
+                  yvar = 1:20 + rnorm(20,sd=3))
 
+ggplot(dat, aes(x=xvar, y=yvar)) +
+    geom_point(shape=1) + 
+    geom_smooth() 
+```
+Note that the `code-fold: true` parameter was added to the code chunk to hide the code by default.  
+The use of the `label` and `fig-cap` options make this a cross-referenceable figure (see @fig-dat).    
+
+### Interactive Plot
+```{r}
+#| label: fig-temperatures
+#| fig-cap: "New Haven Temperatures"
+
+pacman:p_load(dygraphs)
+dygraph(nhtemp) %>% 
+  dyRangeSelector(dateWindow = c("1920-01-01", "1960-01-01"))
 ```
 
 ## Session information
@@ -96,3 +130,10 @@ pacman::p_load(here, tidyverse)
 ```{r}
 sessionInfo()
 ```
+
+## Acknowledgements
+
+Quarto Gallery
+- [Quarto HTML Basics](https://quarto-dev.github.io/quarto-gallery/articles/html/html.html)
+- [A Quarto Page Layout Example](https://quarto-dev.github.io/quarto-gallery/page-layout/tufte.html)
+  

@@ -50,7 +50,7 @@ Good **data management** is the foundation for **reproducibility**.
 -   Having an output folder with different sub-directories for each separate
     analysis makes it easier later.
 
-#### [Good Enough Practices for Scientific Computing](https://github.com/swcarpentry/good-enough-practices-in-scientific-computing/blob/gh-pages/good-enough-practices-for-scientific-computing.pdf) Recommendations:
+#### [Good Enough Practices for Scientific Computing](https://github.com/swcarpentry/good-enough-practices-in-scientific-computing/blob/gh-pages/good-enough-practices-for-scientific-computing.pdf)
 
 -   Put text documents associated with the project in the `doc` directory.
 -   Put raw data and metadata in the `data` directory, and files generated
@@ -106,12 +106,9 @@ source("src/functions/<function_name>.R")
 
 Use `stopifnot()` to flexibly check function arguments in R.
 
-## Data Analysis Reports with knitr
+## Data Analysis Reports (.qmd, .Rmd) rendered/knitted into **HTML** reports.
 
-Rmd files knitted into **HTML** reports.
-
--   Not for traditional publication purposes, but essential throughout the life
-    stage of a research project.
+Not for traditional publication purposes, but essential throughout the life stage of a research project.
 
 Benefits over R scripts, word, and LaTeX:
 
@@ -123,34 +120,6 @@ Benefits over R scripts, word, and LaTeX:
 -   Appropriate to its purpose $\rarr$ simpler and **less time-intensive
     formatting**
 
-### Markdown (.md)
-
-endash (--) vs emdash (---)
-
-#### Maths
-
-`$\frac{x}{y}$`$\rarr$ $\frac{x}{y}$
-
-`$\bar{x}$` $\rarr$ $\bar{x}$
-
-`$\sqrt{n}$` $\rarr$ $\sqrt{n}$
-
-`superscript^2^` $\rarr$ superscript^2^
-
-`subscript~2~` $\rarr$ subscript~2~
-
-#### Table
-
-| Col1 | Col2 |
-|------|------|
-| x1   | x2   |
-
-Alternatively, may insert a table without manual formatting in the visual mode
-of RMarkdown and Quarto files.
-
-You can review Markdown syntax by navigating to the “Markdown Quick Reference”
-under the “Help” field in the toolbar at the top of RStudio.
-
 ### R code chunks vs code blocks
 
 Code chunks will be run when compiling; code blocks will not be run.
@@ -158,11 +127,13 @@ Code chunks will be run when compiling; code blocks will not be run.
 1.  R code chunk will be run when compiling\
     Add a new code chunk - Mod + Alt + I
 
-    \`\`\`{r} \`\`\`
+    \`\`\`{r} 
+    \`\`\`
 
 2.  R code block will not be run when compiling
 
-    \`\`\`r \`\`\`
+    \`\`\`r 
+    \`\`\`
 
 #### Specify chunk options to control formatting.
 
