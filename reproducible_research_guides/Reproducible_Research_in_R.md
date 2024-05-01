@@ -2,8 +2,8 @@
 
 **contributor**: Lingyan Yu\
 **date**: 2024-04-29\
-**status**: In Progress\
-**version**: 0.3
+**status**: Complete Draft\
+**version**: 1.0
 
 ## Definition of Reproducibility
 
@@ -94,17 +94,31 @@ folders:
 If you see blocks of similar lines of code through your current project, those
 are usually candidates for being moved into functions.
 
-For new projects, break down your problem into digestible chunks and worry about
-the implementation details later. Keep breaking down the problem into manageable
-small functions and build back up from there.
+For new projects, break down your problem into digestible chunks and worry 
+about the implementation details later. Keep breaking down the problem into 
+manageable small functions and build back up from there.
 
-To source functions in analysis scripts:
+### To source functions in analysis scripts:
 
 ``` r
 source("src/functions/<function_name>.R")
 ```
 
-Use `stopifnot()` to flexibly check function arguments in R.
+### Defensive Programming
+
+Combining Functions for versatile use: Not all parameters need to be entered. Example:
+``` r
+my_function <- function(x, y = NULL, z = NULL) {
+  stopifnot(is.data.frame(x)) # check assumption criteria
+  return()
+}
+```
+
+### Developer Tools
+
+- Documentation using the [roxygen2](https://cran.r-project.org/web/packages/roxygen2/vignettes/rd.html) package
+
+- Formal automated tests can be written using the [testthat](https://r-pkgs.had.co.nz/tests.html) package.
 
 ## Data Analysis Reports (.qmd, .Rmd) rendered/knitted into **HTML** reports.
 
@@ -164,3 +178,7 @@ results woven together
     (2021)](https://github.com/ajhmohr/Reproducible_Research_in_R/tree/master)
 -   [Software Carpentry - R for Reproducible Research Analysis
     (2024)](https://swcarpentry.github.io/r-novice-gapminder/)
+
+## Resources
+
+-   Book: [Building Reproducible Analytical Pipelines with R](https://raps-with-r.dev/)

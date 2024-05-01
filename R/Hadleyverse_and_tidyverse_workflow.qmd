@@ -1,0 +1,37 @@
+---
+title: "Hadleyverse and Tidyverse Workflow"
+curator: "Lingyan Yu"
+status: "Published"
+version: "1.0"
+format:
+    html:
+        html-math-method: katex
+        code-tools: true
+        self-contained: true
+execute: 
+    warning: false
+---
+
+## Tidyverse
+
+1.  **`ggplot2`**: Used for data visualization.
+2.  **`dplyr`**: Provides a grammar for data manipulation, including filtering
+    rows, selecting columns, re-arranging data, and aggregating information.
+3.  **`tidyr`**: Helps in tidying your data. Its functions allow you to
+    rearrange data to make it easier to analyze.
+4.  **`readr`**: Designed for reading rectangular data, particularly csv and
+    delimited files.
+5.  **`purrr`**: Enhances R’s functional programming (FP) toolkit by providing a
+    complete and consistent set of tools for working with functions and vectors.
+6.  **`tibble`**: Provides a modern reimagining of the data frame, keeping what
+    time has proven effective, and throwing out what is not.
+7.  **`stringr`**: Simplifies the process for string operations.
+8.  **`forcats`**: Provides tools for handling categorical variables (factors).
+
+## Useful Hadleyverse packages not included in Tidyverse
+
+1.  **`lubridate`**: Facilitates working with dates and times.
+2.  **`devtools`**/**`usethis`**: Essential for package development, providing
+    various tools to facilitate the process.
+3.  **`testthat`**: Designed for unit testing, making it easy to write and run
+    tests for R code.

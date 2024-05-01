@@ -1,0 +1,54 @@
+---
+title: "R Style Guide - Hadley"
+curator: "Lingyan Yu"
+toc: true
+status: "Published"
+format:
+    html:
+        html-math-method: katex
+        code-tools: true
+        self-contained: true
+execute: 
+    warning: false
+---
+
+Two R packages support this style guide: `**styler**` and `**lintr**` 
+
+## Naming
+
+-   Snake case： use only **lowercase** letters, numbers, and   
+-   Strive to use verbs for function names.
+
+## Syntax
+
+### Function Calls
+
+Omit the names of data arguments
+
+### If statements
+
+-   If used, `else` should be on the same line as `}`.
+
+-   Function calls that affect control flow (like `return()`, `stop()` or `continue()`) should always go in their own `{}` block.
+
+### Long lines
+
+-   Use one line each for the function name, each argument, and the closing `)`.
+
+-   Short unnamed arguments can also go on the same line as the function name, even if the whole function call spans multiple lines.
+
+### Comments
+
+In data analysis code, use comments to record important findings and analysis decisions. If you need comments to explain what your code is doing, consider rewriting your code to be clearer.
+
+## Functions
+
+-   Prefer function-indent style to double-indent style when it fits.\
+-   Only use `return()` for early returns. Otherwise, rely on R to return the result of the last evaluated expression.\
+-   If your function is called primarily for its side-effects (like printing, plotting, or saving to disk), it should return the first argument invisibly, i.e. `invisible(x)`.\
+-   Comments should be in sentence case, and only end with a full stop if they contain at least two sentences.
+
+## Pipes
+
+-   Avoid using the pipe when there are meaningful intermediate objects that could be given informative names.\
+-   Avoid omit "()" on functions that don’t have arguments.

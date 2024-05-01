@@ -1,0 +1,178 @@
+---
+title: "Data Processing in R"
+curator: "Lingyan Yu"
+toc: true
+status: "Published"
+version: "1.0"
+format:
+    html:
+        html-math-method: katex
+        code-tools: true
+        self-contained: true
+execute: 
+    warning: false
+---
+
+## Importing data
+
+-   read_*() functions (`readr` package) for faster reading than read.*() functions
+-   `data.table()` for large datasets
+-   For very large datasets, consider using tools that allow you to work with data that doesn't fit into memory, such as `data.table()`, or databases connected through `RSQLite` packages.
+
+### Tuples in line
+
+```r
+v <- readLines()
+strsplit(v, "\t") # outputs lists
+as.data.frame(..., stringsAsFactors = F)
+```
+
+### Special Encoding
+
+`fileEncoding = "UTF-8"` for Chinese characters
+
+## Data types
+
+```r
+typeof(data)
+```
+
+### Logical operators
+
+-   Use `&` and `|` when you are working with vectors and you want to apply the logical operation element-wise across the vectors.\
+-   Use `&&` and `||` when you are working with a single logical condition (even if that condition involves vectors) and you want a single TRUE or FALSE result, such as in an if statement.\
+-   !c(TRUE, FALSE) -> c(FALSE, TRUE)
+-   `%in%`
+
+### Type coercion and type hierarchy 
+
+logical -\> integer -\> double (“numeric”) -\> complex -\> character,   
+where -\> can be read as are transformed into.
+
+### Special values
+
+```r
+is.na() # returns all positions containing NA or NaN      
+is.nan() # looks for NaN      
+is.infinite() # looks for Inf     
+is.finite() # returns all positions that are not NA, NaN or Inf      
+
+na.omit() # filters out all missing values        
+```
+
+## Data structures
+
+```r
+str(data)
+```
+
+Element in any data structures can be named and renamed. 
+```r
+names(data)
+names(data)[i] <- "new_name"
+```
+
+### Vector
+
+```r
+vector <- c(name1 = ..., name2 = ..., ...)
+vector["name1"] # To retrieve a named element
+```
+
+#### Matrices
+
+A matrix is a vector with added dimension attributes:
+```r
+length(matrix)
+>nrow x ncol
+```
+
+If initiating with a vector, it populates by row by default.    
+
+Element-wise (`*`) VS. matrix multiplication (`%*%`)    
+
+```r
+spMatrix() # saves storage & computing time
+dim(matrix)
+```
+
+### List
+
+List elements can be vectors, lists, and data frames of different types. 
+
+Use `[[ ]]` to extract elements. If named, `$` is also available.
+
+#### Data frames
+
+A list of data.frame class.
+
+The class is the meaning of the object for humans. The same type can be extended to different classes.
+
+## Subsetting Data
+
+Access arbitrary sets of data using `[c(...)]` or `[seq(...)]`.
+
+## Vectorization: Use vectorized operations instead of loops.
+
+### Use apply family functions when appropriate
+
+```r
+lapply()
+sapply() # return vector or matrix
+mapply() # pairwise; return vector or matrix
+ddply() # split data frame, apply function, and return results in a data frame
+```
+
+### If loops are absolutely needed, specifying the output dimension during initialization is recommended.
+
+For vectors and lists, one may proceed without specifying the dimensions if needed.
+
+1)  Vectors
+```r
+vector()    
+vector(n)  
+vector("type_name", n) 
+c()
+```
+
+2)  Lists
+```r
+list()  
+vector("list", n) 
+```
+
+But for matrices, **higher-dimensional** arrays, and data frames, specifying output dimensions ahead of time can be more critical.
+
+1)  Matrices: mandatory
+
+`matrix(nrow = m, ncol = n)`
+
+2)  Arrays: mandatory
+
+`array(dim = c(dim1, dim2, ...))`
+
+3)  Data Frames
+
+`data.frame()`
+
+Remove temporary variables in the inner loop within for loops
+
+## More on control flow
+
+`ifelse(condition, a, b)` is vectorized and not a drop-in replacement for `if (condition) a else b`.
+
+### Some useful functions for logical vectors
+
+-   `any()` will return TRUE if any element of a vector is TRUE.  
+-   `all()` will return TRUE if all elements of a vector are TRUE.    
+
+## Other utility functions
+
+```r
+ls()
+attach()
+detach() # add/remove vars from the environment
+
+sort(..., na.last = TRUE)
+order() # return the order
+```
