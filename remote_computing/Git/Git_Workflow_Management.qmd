@@ -1,0 +1,87 @@
+---
+title: "Beginner's Guide to the Basic Git Workflow Management"
+author: "Lingyan Yu"
+date: "2024-05-17"
+version: "2.0"
+status: "Complete Draft"
+output: 
+    html:
+        toc: true
+        toc_float: true
+        number_sections: true
+---
+
+This tutorial is tailored for Git beginners and will cover the essentials of creating a personal working branch, updating it with changes from the main project, and committing and pushing your work. This focuses on practical steps to keep your work synchronized and reviewed with ease.  
+
+*Note. Taking small steps in learning tools like Git is completely okay. In time, as you grow more familiar with the basics, you may gradually start exploring more advanced features.*
+
+## 1. (Optional) Create a Dedicated Branch for Your Work. These are one-time setup commands on your local terminal:
+
+- Use Case: The main branch is stable, so that you want to keep your work isolated until it's ready for review and merge.  
+- Cases when it's not necessary: If the main project is still in development and not yet stable, you can work on the main branch and push your changes directly.
+
+```bash
+cd <path/to/your/repository> # The "local" folder that hosts all branches of your Git repo
+git pull origin main # Update the local main branch with any changes made and pushed to the remote repository
+# Resolve conflicts (if any)
+
+git checkout -b <your-working-branch-name> # Create a new local branch based on the local main you just updated
+```
+*Note.* Pull would not overwrite changes made on the current machine that's not in conflict with the pulled updates. 
+If there is a conflict, pull would stop and force one to examine and resolve the conflicts first (merge, stash, etc.). 
+Conflicts are uncommon when collaborators work on different files within the project.
+
+## 2. Before starting each work session, pull updates from remote main branch
+
+When starting each work session, pull first to ensure that the cloned local repo has incorporated updates from other collaborators or from other machine (i.e., between remote session on MSI and one's local desktop). 
+
+- If there is no dedicated working branch, navigate to your local repository, run `git pull origin main`, and resolve conflicts (if any).
+
+- If there is a dedicated working branch:  
+
+   ```bash
+   git checkout main # Switch from your working branch to the main branch
+   git pull origin main
+   git checkout <your-working-branch-name>
+   git merge main # Merge the updates from the main branch to your working branch
+   ```
+
+## 3. Work on the project
+
+## 4. Commit and Push
+
+### Local operation
+
+A "commit" logs a snapshot of your work on your local desktop. 
+It is typically more official and stable than saves.  
+You don't need to commit every single change you have made. You may save your work per usual.   
+
+```bash
+git add <file-name> # Stage selected changes so that the commit message is more specific
+git add --all . # Stage all changes including manual removals
+git commit -m "Message"
+```
+
+```bash
+git commit -am "Message"
+```
+Stage all tracked, modified files and commit them in one step.  
+This will not include new (untracked) files.  
+
+### Remote operation 
+
+A "Push" uploads all **local** commits since your last push to the **remote** repo.
+
+- If working on the main branch, **pull** before **push**:
+
+   ```bash
+   git pull origin main 
+   # Resolve conflicts (if any)
+   git push origin main 
+   ```
+
+- If working on a dedicated branch:
+  
+   ```bash
+   git push origin <your-working-branch-name>
+   ```

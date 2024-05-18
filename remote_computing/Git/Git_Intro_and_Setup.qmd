@@ -1,15 +1,26 @@
-# Git for Version Control: Intro
+---
+title: "Git for Version Control: Intro"
+author: "Lingyan Yu"
+date: "`r Sys.Date()`"
+version: "1.0"
+status: "Complete Draft"
+output: 
+   html:
+      toc: true
+      toc_float: true
+      number_sections: true
+---
 
-## Main functions
+## History of Version Control Systems
 
-- clone
-- pull
-- commit, push
+Starting from the 80s
+
+Modern Distributed Systems: Git, Mercurial, etc.
   
 ## Git vocabs
 
+- Repo: (remote/local) repository
 - Branch: main branch
-- Repo: repository, remote, local
   
 ## Github: Git platform
 
@@ -36,14 +47,22 @@ Github enterprise: <http://github.umn.edu/>
 
       If just for the session, remove `--global`.
 
-3. Create/select a local folder for project-related items
-
-4. Clone a remote repository to this folder using ssh
-
-   1. **Generate SSH Key**: If you haven't already, generate an SSH key on your local machine.  
+   3. (Optional) Configure your default text editor to VS Code (and many other options).
+      Install "code" from VSCode commander by pressing `Cmd + Shift + P` and typing `Shell Command: Install 'code' command in PATH`.  
+      Then, run the following command in Terminal:
 
       ```bash
-      ssh-keygen -t rsa -b 4096 -C "youremail@example.com"
+      git config --global core.editor "code --wait"
+      ```
+
+      You may check with `git config --global -e`.
+
+3. (Optional Best Practices) Set up ssh key pair between a machine and a GitHub account for secure connections. 
+
+   1. **Generate SSH Key**: Generate an SSH key on your local machine.  
+
+      ```bash
+      ssh-keygen -t rsa -b 4096 -C "
       ```
 
    2. **Add SSH Key to GitHub**
@@ -67,6 +86,17 @@ Github enterprise: <http://github.umn.edu/>
       git clone git@github.com:username/repository.git
       ```
 
+4. Create or navigate to a local folder for all your Git repositories.
+   
+5-1. **Clone Remote Repository**: Use ssh or http links as applicable. 
+
+   ```bash
+   git clone git@github.com:username/repository.git
+   ```
+5-2. **Create a New Repository Based on a Local Folder**  
+
+   Move the (project) folder into the local repository folder. Then, navigate to the local repository folder and run `git init`.
+
 ## Workflow
 
 - Only the local "clone" copies will be modified when you save your changes. If you stage and commit a "batch" of your changes to Git, it will updated your local git file history with the new commit as the most recent "official" version. These two steps will not affect any remote copies.
@@ -74,6 +104,8 @@ Github enterprise: <http://github.umn.edu/>
 
 ## Git Resources
 
+- Access documentation for Git commands by typing `git <command> -h` for help.
+  - Remember the ":" is a prompt waiting for commands and you can press "Q" to exit the manual.
 - [Git Intro curated by Software Carpentry](https://swcarpentry.github.io/git-novice/)
 - LATIS offered a synchronous Git workshop earlier this month, so we just missed it. There may be internal resources for students working at LATIS. They most likely will offer it again next semester as well.
 - [Minnesota Supercomputing Institute (MSI) Youtube channel](https://www.youtube.com/@UofMMSI/featured): recordings of previous tutorials

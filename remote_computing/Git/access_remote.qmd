@@ -1,0 +1,60 @@
+---
+title: "Access Remote"
+author: "Lingyan Yu"
+date: "2024-05-17"
+version: "1.0"
+status: "Complete Draft"
+format:
+    html:
+        code-fold: true
+---
+
+The local desktop uses macOS system. See linked resources for Windows specifications. Feel free to modify the document to reflect system updates and to add specifics of non-macOS devices.
+
+## 1. Remote Git Repository
+
+See "Git Intro and Setup" and "Git Workflow Management" for more details.
+
+### Utility Git functions
+```bash
+git status # check what files have been changed
+git log # display the commit history along with the commit hashes (40-character strings)
+git diff --color-words # Highlights the changed words using colors.
+```
+To switch branches: 
+```bash
+git checkout <branch-name>
+git checkout -b <new-branch-name>
+git checkout <commit-hash> # revert to a previous state or a different branch
+```
+Temporarily save uncommitted local changes and clear the working directory
+```bash
+git stash "description" 
+git stash list
+git stash pop 
+```
+
+## 2. RStudio is open source and natively integrated with GIT
+
+Natively integrated with GitHub Copilot (AI-powered code completion) if interested. 
+GitHub Copilot is not free and costs $10/mo across platforms.
+
+## 3. VS Code is open source and natively integrated with GIT
+
+Natively integrated with GitHub Copilot (AI-powered code completion).
+
+Host an acclaimed Remote Development extension pack.
+
+### 1) Readily integrated with GitHub via the Remote - Repo extension
+
+After connecting to a remote repository, may edit and commit push directly from the editor without cloning the repository to the local machine.
+
+*Note.* Not recommended for daily use but can be very helpful when needing quick edits on a temporary device.
+
+### 2) VS Code can be readily integrated with MSI ssh via the Remote - SSH extension
+
+[VS Code Documentation](https://code.visualstudio.com/docs/remote/ssh#_getting-started)
+
+Get the full host name with `bash hostname -f` on the remote terminal.
+
+Must be on VPN or on university sites when using VS Code to connect with the remote host.

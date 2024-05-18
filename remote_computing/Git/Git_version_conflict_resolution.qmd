@@ -1,0 +1,44 @@
+---
+title: "Git Version Conflict Resolution"
+author: "Lingyan Yu"
+date: "2024-05-17"
+version: "1.0"
+status: "Complete Draft"
+output: 
+    html:
+        toc: true
+        toc_float: true
+        number_sections: true
+---
+
+If you encounter a conflict between the `main` branch and your working branch during the merge process, here's how you can handle it:
+
+## 1. Understanding the Conflict
+
+A merge conflict occurs when Git is unable to automatically resolve differences in code between two commits.
+For example, if both your mentor (in the `main` branch) and you (in your working branch) have made changes to the same part of the same file, Git will need help to decide which changes to keep.
+
+## 2. Identifying the Conflict
+
+When you run `git merge main`, Git will output a message indicating that there are conflicts that need manual resolution. It will list the files where the conflicts exist.
+
+## 3. Resolving the Conflict
+
+- You'll need to open the conflicting files in a code editor.
+- Inside these files, Git marks the conflicting sections clearly, typically with `<<<<<<<`, `=======`, and `>>>>>>>` markers. The part between `<<<<<<<` and `=======` is your changes, and the part between `=======` and `>>>>>>>` is the changes from the `main` branch.
+- You should carefully review these sections and decide what the final code should look like. This might involve keeping your changes, accepting the changes from `main`, or a combination of both.
+- After editing the code to resolve the conflicts, you should remove the Git conflict markers (`<<<<<<<`, `=======`, and `>>>>>>>`).
+
+## 4. Completing the Merge
+
+- Once you have resolved all conflicts, you should save the files.
+- Then, you’ll need to run `git add <file-name>` for each file you resolved conflicts in. This marks the conflicts as resolved.
+- After adding all resolved files, you should complete the merge by running `git commit`. This will open an editor to write a merge commit message or you can just save and close to accept the default message.
+
+## 5. Testing
+
+It's crucial you test the code to ensure that your conflict resolution didn’t introduce any errors.
+
+## 6. Seek Assistance As Needed
+
+If you're unsure about how to resolve a particular conflict, it's a good idea to reach out to your mentor or another research/IT support for guidance.
