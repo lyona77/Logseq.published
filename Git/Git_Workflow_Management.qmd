@@ -85,3 +85,81 @@ A "Push" uploads all **local** commits since your last push to the **remote** re
    ```bash
    git push origin <your-working-branch-name>
    ```
+
+## 5. Managing Tracked and Ignored Files
+
+### Remove Previously Tracked Files After Adding to .gitignore
+
+1. **Add Files to `.gitignore`**:
+   Ensure the files or directories to be ignored are listed in `.gitignore`.
+
+2. **Remove Tracked Files**:
+   ```sh
+   git rm -r --cached .
+   ```
+
+3. **Add Changes to Staging Area**:
+   ```sh
+   git add .
+   ```
+
+4. **Commit the Changes**:
+   ```sh
+   git commit -m "Remove files from repository and update .gitignore"
+   ```
+
+5. **Push Changes to Remote Repository**:
+   ```sh
+   git push origin <your-branch-name>
+   ```
+
+### Example:
+- Update `.gitignore`:
+   ```sh
+   echo "*.log" >> .gitignore
+   echo "temp/" >> .gitignore
+   ```
+- Remove Tracked Files:
+   ```sh
+   git rm -r --cached .
+   git add .
+   git commit -m "Remove log files and temp directory from tracking"
+   git push origin main
+   ```
+
+### Track a Specific Folder Despite .gitignore
+
+1. **Edit `.gitignore`**:
+   - Add an entry to ignore the entire folder.
+   - Add an exception for the specific folder to track:
+   ```plaintext
+   # Ignore all folders
+   */
+
+   # Unignore the specific folder
+   !tracked_folder/
+   ```
+
+2. **Force Add the Folder**:
+   ```sh
+   git add -f tracked_folder/
+   ```
+
+3. **Commit the Changes**:
+   ```sh
+   git commit -m "Track the specific folder despite .gitignore"
+   ```
+
+4. **Push Changes to Remote Repository**:
+   ```sh
+   git push origin <your-branch-name>
+   ```
+
+### Example of `.gitignore`:
+```plaintext
+# Ignore all folders
+*/
+
+# Unignore the specific folder
+!tracked_folder/
+```
